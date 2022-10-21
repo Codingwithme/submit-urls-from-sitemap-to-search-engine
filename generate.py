@@ -4,8 +4,8 @@ import urllib
 import urllib.request
 import random
 
-site = 'https://blog.mhuig.top'
-sitemaps = ['/post-sitemap.xml','/page-sitemap.xml']
+site = 'https://www.gwg365.cn'
+sitemaps = ['https://www.gwg365.cn/web/sitemap1.xml','https://www.gwg365.cn/web/sitemap.xml']
 
 result = []
 bingData = {}
@@ -30,18 +30,18 @@ googleUrllist=[]
 for data in result:
     i=i+1
     result.remove(data)
-    # bing 提交前5条
-    if i <= 5:
+    # bing 提交前500条
+    if i <= 500:
         bingUrllist.append(data)
-    # baidu google 提交前50条
+    # baidu google 提交前500条
     googleUrllist.append(data)
-    if i == 50:
+    if i == 500:
         break
 
-# bing 提交随机5条
-bingUrllist= bingUrllist + random.sample(result,5)
-# baidu google 提交随机50条
-googleUrllist=googleUrllist + random.sample(result,50)
+# bing 提交随机500条
+bingUrllist= bingUrllist + random.sample(result,500)
+# baidu google 提交随机500条
+googleUrllist=googleUrllist + random.sample(result,500)
 
 with open('urls.txt', 'w') as file:
     for data in googleUrllist:
